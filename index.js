@@ -1,10 +1,10 @@
 const express = require('express')
 const app=express();
-require('./db/mongoose.js')
+require('./src/db/mongoose.js')
 const port = 8000
-const credential = require('./Routers/credential')
-const metaData = require('./Routers/metaData')
-const document = require('./Routers/documents')
+const credential = require('./src/Routers/credential')
+const metaData = require('./src/Routers/metaData')
+const document = require('./src/Routers/documents')
 const bodyParser=require('body-parser')
 const passport=require('passport')
 const session = require('express-session');

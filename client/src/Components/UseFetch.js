@@ -1,4 +1,5 @@
 
+import axios from "axios";
 import { useState,useEffect } from "react";
 
 const useFetch = (url) => {
@@ -9,8 +10,7 @@ const useFetch = (url) => {
     const abortController= new AbortController();
 
     useEffect(() => {
-        
-        fetch(url,{singal:abortController.signal})
+        axios.get(url)
         .then((res)=>{
             if(!res.ok){
                 throw Error("Failed to fetch data for that resource");

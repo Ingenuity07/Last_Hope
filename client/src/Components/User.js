@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
@@ -22,11 +23,15 @@ const User = ({setProfile}) => {
         event.preventDefault();
         const user_data = {  username, password };
         setRegistered(true);
-        fetch("/credential/user/signup", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(user_data)
-        }).then((res)=>{
+
+        const config = {
+            headers:{
+                "content-type": "application/json"
+            }
+          };
+
+        axios.post("/credential/user/signup",user_data,config)
+        .then((res)=>{
             if(res.status!==200)
                 throw new Error("Unauthorized")
 
@@ -46,12 +51,14 @@ const User = ({setProfile}) => {
 
         console.log(user_data)
 
-        setRegistered(true);
-        fetch("/credential/user/signin", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(user_data)
-        }).then((res)=>{
+        const config = {
+            headers:{
+                "content-type": "application/json"
+            }
+          };
+
+        axios.post("/credential/user/signin",user_data,config)
+        .then((res)=>{
             if(res.status!==200)
                 throw new Error("Unauthorized")
             setRegistered(false);
@@ -61,9 +68,6 @@ const User = ({setProfile}) => {
         .catch((err)=>{
             setRegistered(false);;
             setIsValid(true)})
-
-        
-
         }
 
 

@@ -11,7 +11,7 @@ const Paper = ({profile}) => {
     const [defaultFileList, setDefaultFileList] = useState([]);
     const { branch, year, subject } = useParams();
 
-    const { data: paper, isPending, error } = useFetch(`http://localhost:8000/document/download?year=` + year + `&branch=` + branch + `&subject=` + subject)
+    const { data: paper, isPending, error } = useFetch(`/document/download?year=` + year + `&branch=` + branch + `&subject=` + subject)
 
     const [progress, setProgress] = useState(0);
 
@@ -37,7 +37,7 @@ const Paper = ({profile}) => {
         
     try {
       const res = await axios.post(
-        "http://localhost:8000/document/upload",
+        "/document/upload",
         fmData,
         config
       );

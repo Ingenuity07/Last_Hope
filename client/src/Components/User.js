@@ -22,7 +22,7 @@ const User = ({setProfile}) => {
         event.preventDefault();
         const user_data = {  username, password };
         setRegistered(true);
-        fetch("http://localhost:8000/credential/user/signup", {
+        fetch("/credential/user/signup", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(user_data)
@@ -47,7 +47,7 @@ const User = ({setProfile}) => {
         console.log(user_data)
 
         setRegistered(true);
-        fetch("http://localhost:8000/credential/user/signin", {
+        fetch("/credential/user/signin", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(user_data)

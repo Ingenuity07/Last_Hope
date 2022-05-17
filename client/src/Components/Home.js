@@ -5,7 +5,7 @@ import useFetch from './UseFetch';
 import { useState,useEffect } from 'react';
 
 const Home = ({globalData , setGlobalData}) => {
-  const { data, isPending, error } = useFetch('http://localhost:8000/metaData/fetch');
+  const { data, isPending, error } = useFetch('/metaData/fetch');
 
   useEffect(() => {
     setGlobalData(data)

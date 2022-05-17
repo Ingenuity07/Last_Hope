@@ -7,7 +7,7 @@ const Navbar = ({profile,setProfile}) => {
 
   const handleClick = ()=>{
 
-      axios.get("http://localhost:8000/credential/user/logout")
+      axios.get("/credential/user/logout")
 
       setProfile(false)
       history.push("/")  

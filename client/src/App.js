@@ -8,7 +8,7 @@ import Home from './Components/Home';
 import User from './Components/User';
 import MyProfile from './Components/MyProfile';
 import Subjects from './Components/Subject';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import Paper from './Components/Paper';
 
@@ -23,29 +23,23 @@ function App() {
       <div className="App">
         <Navbar profile={profile} setProfile={setProfile}/>
         {/* <section className="offset"></section> */}
-        <Switch>
-          <Route exact path="/" >
-            <Home globalData = {data} setGlobalData={setData}/>
-            <Carousel />
-          </Route>
-          <Route exact path="/Resources/:branch" >
-            <Resources globalData={data} />
-          </Route>
-          <Route exact path="/Subjects/:branch/:year" >
-            <Subjects globalData={data}  profile={profile} setProfile={setProfile} />
-          </Route>
+        <Routes>
           
-          {profile&&<Route  exact path="/Paper/:branch/:year/:subject" >
-            <Paper profile={profile} />
-          </Route>}
+          <Route path="/" element={<Home globalData = {data} setGlobalData={setData}/>} />
 
-          <Route exact path="/User">
-            <User profile={profile} setProfile={setProfile} setUserData={setUserData}/>
-          </Route>
 
-         
+          <Route path="/Resources/:branch"  element = {<Resources globalData={data} />}/>
+            
+          
+          <Route path="/Subjects/:branch/:year" element={<Subjects globalData={data}  profile={profile} setProfile={setProfile} /> }/>
+            
+          
+          {profile&&<Route path="/Paper/:branch/:year/:subject" elements={<Paper profile={profile} />}/>}
 
-        </Switch>
+
+          <Route path="/User" element={<User profile={profile} setProfile={setProfile} setUserData={setUserData}/>}/>
+          
+        </Routes>
         <Footer />
       </div>
     </Router>

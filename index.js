@@ -39,7 +39,7 @@ __dirname=path.resolve()
 console.log("hwere 4")
 
 console.log((path.join(__dirname,'/client/build')))
-console.log(__dirname,'client','build','index.html')
+console.log(path.resolve(__dirname,'client','build','index.html'))
 
 
 if(process.env.NODE_ENV == "production")

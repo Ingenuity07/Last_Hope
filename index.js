@@ -7,7 +7,7 @@ const metaData = require('./src/Routers/metaData')
 const document = require('./src/Routers/documents')
 const bodyParser=require('body-parser')
 const passport=require('passport')
-const session = require('express-session');
+const session = require('cookie-session');
 const cors = require('cors')
 const path = require('path')
 app.use(cors())

@@ -32,8 +32,6 @@ app.use('/document',document);
 
 console.log("hwere 3")
 
-app.use(express)
-
 __dirname=path.resolve()
 
 console.log("hwere 4")

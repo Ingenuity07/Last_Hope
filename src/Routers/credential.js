@@ -5,7 +5,7 @@ const Admin= require('../models/admin')
 
 const bodyParser=require("body-parser");
 const mongoose=require("mongoose");
-const session = require('express-session');
+const session = require('cookie-session');
 const passport=require("passport");
 
 const router = new express.Router();

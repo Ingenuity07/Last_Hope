@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
+import { Link ,useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const Navbar = ({profile,setProfile}) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleClick = ()=>{
 
       axios.get("/credential/user/logout")
 
       setProfile(false)
-      history.push("/")  
+      navigate("/")  
   }
 
 

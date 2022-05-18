@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useFetch from "./UseFetch";
 
 const User = ({setProfile}) => {
@@ -12,7 +12,7 @@ const User = ({setProfile}) => {
     const [registered, setRegistered] = useState(false);
     const [choice, setChoice] = useState(true);
     const [isValid, setIsValid] = useState(false);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     
     console.log(username)
@@ -37,7 +37,7 @@ const User = ({setProfile}) => {
 
             setRegistered(false);
             setProfile(true);
-            history.push("/")}
+            navigate("/")}
         )
         .catch((err)=>{
             setRegistered(false);;
@@ -63,7 +63,7 @@ const User = ({setProfile}) => {
                 throw new Error("Unauthorized")
             setRegistered(false);
             setProfile(true);
-            history.push("/")}
+            navigate("/")}
         )
         .catch((err)=>{
             setRegistered(false);;

@@ -1,11 +1,11 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useHistory } from "react-router";
 import useFetch from "./UseFetch";
 const Subjects = ({ globalData ,profile}) => {
     const { branch,year } = useParams();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [subjects, setSubjects] = useState([])
 
@@ -32,9 +32,9 @@ const Subjects = ({ globalData ,profile}) => {
 
     const handleClick=(subject)=>{
         if(profile===true)
-            history.push(`/Paper/${branch}/${year}/${subject}`)
+            navigate(`/Paper/${branch}/${year}/${subject}`)
         else
-            history.push("/User")
+            navigate("/User")
 
     }
 

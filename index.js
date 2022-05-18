@@ -1,6 +1,6 @@
 const express = require('express')
 const app=express();
-require('./src/db/mongoose.js')
+require('./src/db/mongoose')
 const port = process.env.PORT
 const credential = require('./src/Routers/credential')
 const metaData = require('./src/Routers/metaData')

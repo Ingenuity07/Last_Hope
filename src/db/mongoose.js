@@ -7,3 +7,4 @@ mongoose.connect(connectionUrl,{
     useNewUrlParser:true
 })
 
+console.log("MongoDB database connected")

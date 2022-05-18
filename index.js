@@ -17,22 +17,26 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+console.log("hwere 1")
+
 app.use(session({
   secret: process.env.SECRET ,
   resave: false,
   saveUninitialized: false
 }))
 
-
+console.log("hwere 2")
 app.use('/credential',credential);
 app.use('/metaData',metaData);
 app.use('/document',document);
+
+console.log("hwere 3")
 
 app.use(express)
 
 __dirname=path.resolve()
 
-  
+console.log("hwere 4")
 if(process.env.NODE_ENV == "production")
 {
     app.use(express.static(path.join(__dirname,'/client/build')))
@@ -40,8 +44,9 @@ if(process.env.NODE_ENV == "production")
     app.get('*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     })
+    console.log("hwere 5")
 }
-
+console.log("hwere 6")
 
 
 

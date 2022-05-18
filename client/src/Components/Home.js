@@ -3,7 +3,6 @@
 import Cards from './Cards'
 import useFetch from './UseFetch';
 import { useState,useEffect } from 'react';
-import Carousel from './Carousel';
 
 const Home = ({globalData , setGlobalData}) => {
   const { data, isPending, error } = useFetch('/metaData/fetch');
@@ -29,7 +28,6 @@ const Home = ({globalData , setGlobalData}) => {
       {isPending && <div>Loading....</div>}
       {data && <Cards data={data} title='Choose Branch' />}
       <hr style={{color:"white",margin:"3rem"}}/>
-      <Carousel/>
     </div>
   );
 }

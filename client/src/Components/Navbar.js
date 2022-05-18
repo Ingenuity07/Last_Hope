@@ -7,6 +7,8 @@ const Navbar = ({profile,setProfile}) => {
   const handleClick = ()=>{
 
       axios.get("/credential/user/logout")
+      .then((res)=>console.log("Logged out"))
+      .catch(err=>console.log(err.message))
 
       setProfile(false)
       navigate("/")  

@@ -10,7 +10,7 @@ const useFetch = (url) => {
     const abortController= new AbortController();
 
     useEffect(() => {
-        axios.get(url)
+        fetch(url,{singal:abortController.signal})
         .then((res)=>{
             if(!res.ok){
                 throw Error("Failed to fetch data for that resource");

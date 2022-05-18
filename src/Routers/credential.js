@@ -193,10 +193,10 @@ passport.deserializeUser(User.deserializeUser());
 });
 
 // logout
-router.get('/user/logout',function(req,res){
+router.get('/user/logout',async function(req,res){
     console.log("I m logout")
-    req.logout();
-    req.session.destroy();
+    await req.logout();
+    await req.session.destroy();
     res.send("Logout");
 })
 

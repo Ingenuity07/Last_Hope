@@ -6,14 +6,18 @@ import axios from 'axios'
 
 import { Button, Upload } from "antd"
 
-const Paper = ({profile}) => {
-    const [file, setFile] = useState([])
-    const [defaultFileList, setDefaultFileList] = useState([]);
-    const { branch, year, subject } = useParams();
+const Paper = ({ profile }) => {
+  const [file, setFile] = useState([])
+  const [defaultFileList, setDefaultFileList] = useState([]);
+  const { branch, year, subject } = useParams();
 
-    const { data: paper, isPending, error } = useFetch(`/document/download?year=` + year + `&branch=` + branch + `&subject=` + subject)
 
-    const [progress, setProgress] = useState(0);
+  console.log(profile)
+
+
+  const { data: paper, isPending, error } = useFetch(`/document/download?year=` + year + `&branch=` + branch + `&subject=` + subject)
+
+  const [progress, setProgress] = useState(0);
 
   const handleFileSubmit = async options => {
     const { onSuccess, onError, file, onProgress } = options;
@@ -34,7 +38,7 @@ const Paper = ({profile}) => {
     fmData.append('branch', branch)
     fmData.append('year', year)
     fmData.append('subject', subject)
-        
+
     try {
       const res = await axios.post(
         "/document/upload",
@@ -59,54 +63,55 @@ const Paper = ({profile}) => {
   };
 
 
-    return (
+  return (
 
-        <div >
-            {error && <div>{error}</div>}
-            {isPending && <div>Loading....</div>}
-            {profile && paper && (
+    <div >
+      {error && <div>{error}</div>}
+      {isPending && <div>Loading....</div>}
+      {profile && paper && (
 
-                <article >
-                    {console.log(paper)}
-                    <h2 style={{ color: "white" }}>All Subjects</h2>
-                    <div className="cards Resources-cards">
-                        {
-                            (paper).map(element => (
-                                <div >
-                                    <a target="_blank">
-                                        <div className="card Resources-card"  >
-                                            <div className="card-body">
-                                                <h2 className="card-title">{element.subject}</h2>
-                                                <a className="btn" href={`http://localhost:8000/document/downloaddoc?id=${element._id}`} download={true} target="blank">DOWNLOAD</a>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            ))
-                        }
+        <article >
+          {console.log(paper)}
+          <h2 style={{ color: "white" }}>All Subjects</h2>
+          <div className="cards Resources-cards">
+            {
+              (paper).map(element => (
+                <div >
+                  <a target="_blank">
+                    <div className="card Resources-card"  >
+                      <div className="card-body">
+                        <h2 className="card-title">{element.subject}</h2>
+                        <a className="btn" href={`http://localhost:8000/document/downloaddoc?id=${element._id}`} download={true} target="blank">DOWNLOAD</a>
+                      </div>
                     </div>
-                    <div style={{ height: "10vh", color: "white", backgroundColor: "black" }}>
-                        <Upload.Dragger
-                            listType="picture"
-                            accept=".pdf"
-                            customRequest={handleFileSubmit}
-                            onChange={handleOnChange}
-                            defaultFileList={defaultFileList}
-                        // iconRender={()=>{
-                        //     return <Upload.Spin></Upload.Spin>
-                        // }}
-                        >
-                            <Button>  Upload</Button>
-                        </Upload.Dragger>
-                        {/* <button onClick={handleSubmit}>SUBMIT</button> */}
-                    </div>
-                </article>
+                  </a>
 
-            )
+                </div>
+              ))
             }
-        </div>
-    );
+          </div>
+
+        </article>
+
+      )
+      }
+      <div style={{ height: "10vh", color: "white", backgroundColor: "black" }}>
+        <Upload.Dragger
+          listType="picture"
+          accept=".pdf"
+          customRequest={handleFileSubmit}
+          onChange={handleOnChange}
+          defaultFileList={defaultFileList}
+        // iconRender={()=>{
+        //     return <Upload.Spin></Upload.Spin>
+        // }}
+        >
+          <Button>  Upload</Button>
+        </Upload.Dragger>
+        {/* <button onClick={handleSubmit}>SUBMIT</button> */}
+      </div>
+    </div>
+  );
 }
 
 export default Paper;

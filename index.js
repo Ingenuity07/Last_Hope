@@ -37,6 +37,11 @@ app.use(express)
 __dirname=path.resolve()
 
 console.log("hwere 4")
+
+console.log((path.join(__dirname,'/client/build')))
+console.log(__dirname,'client','build','index.html')
+
+
 if(process.env.NODE_ENV == "production")
 {
     app.use(express.static(path.join(__dirname,'/client/build')))

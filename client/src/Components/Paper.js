@@ -73,12 +73,12 @@ const Paper = ({ profile }) => {
         <article >
           {console.log(paper)}
           <h2 style={{ color: "white" }}>All Subjects</h2>
-          <div className="cards Resources-cards">
+          <div className="card card-resource resource">
             {
               (paper).map(element => (
                 <div >
                   <a target="_blank">
-                    <div className="card Resources-card"  >
+                    <div className="cards cards-resource"  >
                       <div className="card-body">
                         <h2 className="card-title">{element.subject}</h2>
                         <a className="btn" href={`http://localhost:8000/document/downloaddoc?id=${element._id}`} download={true} target="blank">DOWNLOAD</a>
@@ -95,7 +95,7 @@ const Paper = ({ profile }) => {
 
       )
       }
-      <div style={{ height: "10vh", color: "white", backgroundColor: "black" }}>
+      <div  className="upload" >
         <Upload.Dragger
           listType="picture"
           accept=".pdf"

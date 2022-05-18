@@ -27,15 +27,11 @@ function App() {
           
           <Route path="/" element={<Home globalData = {data} setGlobalData={setData}/>} />
 
-
           <Route path="/Resources/:branch"  element = {<Resources globalData={data} />}/>
-            
           
           <Route path="/Subjects/:branch/:year" element={<Subjects globalData={data}  profile={profile} setProfile={setProfile} /> }/>
-            
           
-          {profile&&<Route path="/Paper/:branch/:year/:subject" elements={<Paper profile={profile} />}/>}
-
+          {profile&&<Route path="/Paper/:branch/:year/:subject" elements={<Paper profile={profile}  />}/>}
 
           <Route path="/User" element={<User profile={profile} setProfile={setProfile} setUserData={setUserData}/>}/>
           

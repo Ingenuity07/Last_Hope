@@ -195,8 +195,8 @@ passport.deserializeUser(User.deserializeUser());
 // logout
 router.get('/user/logout',async function(req,res){
     console.log("I m logout")
-    await req.logout();
-    await req.session.destroy();
+    req.logout();
+    req.session.destroy();
     res.send("Logout");
 })
 

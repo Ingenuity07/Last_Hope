@@ -50,12 +50,12 @@ const Subjects = ({ globalData ,profile}) => {
 
                 <article >
                     <h2 style={{ color: "white" }}>Choose Subject</h2>
-                    <div className="cards cards-crd">
+                    <div className="card card-resource resource">
                         {
                             (subjects).map(element => (
                                 <div>
                                         
-                                            <div className="card card-crd"  >
+                                            <div className="cards cards-resource"  >
                                                 <div className="card-body">
                                                     <h2 className="card-title">{element.subject}</h2>
                                                 </div>

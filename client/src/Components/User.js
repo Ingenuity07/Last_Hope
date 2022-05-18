@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { useNavigate } from "react-router-dom";
 import useFetch from "./UseFetch";
 
-const User = ({setProfile}) => {
+const User = ({setProfile,profile}) => {
 
 
     const [password, setPassword] = useState("");
@@ -15,8 +15,7 @@ const User = ({setProfile}) => {
     const navigate = useNavigate();
 
     
-    console.log(username)
-    console.log(password)
+    console.log(profile)
 
 
     const handleSignUp = (event) => {
@@ -32,7 +31,7 @@ const User = ({setProfile}) => {
 
         axios.post("/credential/user/signup",user_data,config)
         .then((res)=>{
-            if(res.status!==200)
+            if(res.status>400)
                 throw new Error("Unauthorized")
 
             setRegistered(false);
